@@ -1,8 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-//using previous homework
-//=====================================
+//array of images
 const images = [
   {
     preview:
@@ -103,9 +102,7 @@ const markup = createMarkup(images);
 //pushing markup into galleryList
 galleryList.insertAdjacentHTML('afterbegin', markup);
 
-//=====================================
-
-//options for SLB
+//options for simplelightbox
 const options = {
   captions: true,
   captionDelay: 250,
