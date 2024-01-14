@@ -39,6 +39,10 @@ form.addEventListener('submit', evt => {
 
     //clear fields of the form
     form.reset();
+
+    //delete fields "email" and "message" from object formData
+    delete formData.email;
+    delete formData.message;
   } else {
     //output to console, that field is empty
     if (!isEmailFilled) console.log('Email field cannot be empty!');
