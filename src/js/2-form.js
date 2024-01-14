@@ -13,7 +13,7 @@ textarea.value = formData.message ?? '';
 
 form.addEventListener('input', evt => {
   //adding input data to the object
-  formData[evt.target.name] = evt.target.value;
+  formData[evt.target.name] = evt.target.value.trim();
 
   //converting object to JSON format
   const strFormData = JSON.stringify(formData);
@@ -28,9 +28,20 @@ form.addEventListener('submit', evt => {
   //output the object with fields "email", "message" and their values
   console.log(formData);
 
-  //clear localstorage
-  localStorage.removeItem(localStorageKey);
+  //vars for check if email and message are filled
+  const isEmailFilled = formData.email && formData.email !== '';
+  const isMessageFilled = formData.message && formData.message !== '';
 
-  //clear fields of the form
-  form.reset();
+  //if email and message are filled, then submit
+  if (isEmailFilled && isMessageFilled) {
+    //clear localstorage
+    localStorage.removeItem(localStorageKey);
+
+    //clear fields of the form
+    form.reset();
+  } else {
+    //output to console, that field is empty
+    if (!isEmailFilled) console.log('Email field cannot be empty!');
+    if (!isMessageFilled) console.log('Message field cannot be empty!');
+  }
 });
